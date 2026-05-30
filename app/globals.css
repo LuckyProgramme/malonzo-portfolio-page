@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Light theme (default) ─────────────────────────────── */
+:root {
+  --font-mono:        var(--font-geist-mono);
+  --c-bg:             #f7f9fb;
+  --c-surface:        #ffffff;
+  --c-surface-alt:    #f2f4f6;
+  --c-nav:            #ffffff;
+  --c-border:         #c6c6cd;
+  --c-border-subtle:  #e2e8f0;
+  --c-text:           #191c1e;
+  --c-text-muted:     #45464d;
+  --grid-line:        rgb(118 119 125 / 0.12);
+}
+
+/* ── Dark theme ─────────────────────────────────────────── */
+.dark {
+  --c-bg:             #0f172a;
+  --c-surface:        #1e293b;
+  --c-surface-alt:    #1e293b;
+  --c-nav:            #0f172a;
+  --c-border:         #334155;
+  --c-border-subtle:  #334155;
+  --c-text:           #f8fafc;
+  --c-text-muted:     #94a3b8;
+  --grid-line:        rgb(51 65 85 / 0.35);
+}
+
+/* ── Base resets ────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  border-radius: 0 !important;
+}
+.rounded-full { border-radius: 9999px !important; }
+
+body {
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-mono);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ── Grid background for panels ────────────────────────── */
+.panel-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ── Scanline overlay — dark mode only ─────────────────── */
+.dark body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0.015) 0px,
+    rgba(0,0,0,0.015) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  animation: scanline 8s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes scanline {
+  from { transform: translateY(0); }
+  to   { transform: translateY(4px); }
+}
+
+/* ── Availability badge pulse ───────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1; }
+}
+.pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+
+/* ── Skill bar fill transition ──────────────────────────── */
+.skill-bar-fill { transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* ── Sidebar icon buttons ───────────────────────────────── */
+.sidebar-icon-btn {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  background: transparent;
+  transition: border-color 150ms ease, color 150ms ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.sidebar-icon-btn:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+/* ── Tooltip via data-tooltip ───────────────────────────── */
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: auto;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #f8fafc;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 4px 8px;
+  border: 1px solid #334155;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  z-index: 50;
+}
+[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-border); }
+::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
