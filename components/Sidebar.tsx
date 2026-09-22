@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useStack } from '@/components/StackContext';
 import { useTheme } from '@/components/ThemeProvider';
 import { personal, siteIdentity, contact } from '@/config/content.config';
@@ -39,10 +40,14 @@ export default function Sidebar() {
 
         {/* User block */}
         <div className="px-3 pt-3 pb-2 border-b border-outline flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-navy border border-outline flex items-center justify-center shrink-0">
-            <span className="font-mono text-xs text-sky uppercase">
-              {personal.name.charAt(0)}
-            </span>
+          <div className="w-8 h-8 rounded-full bg-navy border border-outline flex items-center justify-center shrink-0 overflow-hidden relative">
+            {personal.avatarUrl ? (
+              <Image src={personal.avatarUrl} alt={personal.name} fill className="object-cover" />
+            ) : (
+              <span className="font-mono text-xs text-sky uppercase">
+                {personal.name.charAt(0)}
+              </span>
+            )}
           </div>
           <div>
             <p className="font-mono text-[12px] tracking-widest text-muted uppercase">

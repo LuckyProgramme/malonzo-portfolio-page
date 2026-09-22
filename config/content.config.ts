@@ -2,6 +2,12 @@
 //  PORTFOLIO CONTENT CONFIG
 //  Edit this file to update everything on your portfolio.
 //  No component files need to be touched for content changes.
+//
+//  NOTE ON STATIC ASSETS (IMAGES & FILES):
+//  Next.js does NOT auto-scan root folders. All static assets must
+//  be placed inside the `public/` directory:
+//    • Images: public/images/avatar.jpg   -> "/images/avatar.jpg"
+//    • Files:  public/files/resume.pdf    -> "/files/resume.pdf"
 // ============================================================
 
 // ─── PERSONAL INFO ──────────────────────────────────────────
