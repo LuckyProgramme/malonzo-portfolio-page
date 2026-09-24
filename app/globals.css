@@ -80,9 +80,6 @@ body {
 }
 .pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
 
-/* ── Skill bar fill transition ──────────────────────────── */
-.skill-bar-fill { transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-
 /* ── Sidebar icon buttons ───────────────────────────────── */
 .sidebar-icon-btn {
   position: relative;
@@ -133,3 +130,11 @@ body {
 ::-webkit-scrollbar-track { background: var(--c-bg); }
 ::-webkit-scrollbar-thumb { background: var(--c-border); }
 ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -13,130 +13,88 @@
 // ─── PERSONAL INFO ──────────────────────────────────────────
 export const personal = {
   name: "John Lester Malonzo",
-  role: "Software Engineer",
-  tagline: "Building precise, scalable systems.",
-  bio: `Full-stack software engineer with a focus on clean architecture and developer experience.
-I enjoy turning complex problems into simple, elegant solutions.`,
+  greeting: "Hello, I’m John Lester.",
+  role: "Solutions Software Engineer",
+  tagline: "I build practical software solutions to problems.",
+  bio: `I'm John, a Computer Science graduate from the University of the East. I like taking a messy problem, find solution and try to make a software people can use.`,
   avatarUrl: "/images/avatar.jpg",
   cvUrl: "/files/resume.pdf",
   availability: {
     open: true,
-    label: "OPEN TO WORK",
+    label: "Open to work",
   },
 } as const;
 
 // ─── CONTACT & SOCIALS ──────────────────────────────────────
 export const contact = {
-  email: "johnlestermalonzo29@gmail.com",
-  github: "https://github.com/yourusername",
-  linkedin: "https://linkedin.com/in/yourusername",
-  facebook: "https://facebook.com/yourusername",
-  location: "Philippines",
+  email: "malonzo22.johnlester@gmail.com",
+  phone: "09473413800",
+  github: "https://github.com/LuckyProgramme",
+  linkedin: "https://www.linkedin.com/in/john-lester-malonzo/",
+  location: "Herbosa, Tondo, Manila, Philippines",
 } as const;
 
 // ─── EXPERIENCE ─────────────────────────────────────────────
 export const experience: ExperienceEntry[] = [
   {
-    company: "Company Name",
-    role: "Software Engineer",
-    period: "2024 — Present",
-    description: "Brief description of responsibilities and key achievements. Keep it to 1–2 sentences.",
-    tags: ["--react", "--typescript", "--node"],
+    company: "CODEV",
+    role: "Quality Assurance Intern",
+    period: "2025",
+    description: "Supported the development lifecycle of a fintech SaaS platform through QA testing and Ruby with RSpec. Reviewed peer test scripts to find possible data issues and check that they followed company practices.",
+    tags: ["RSpec", "Ruby", "QA testing"],
   },
   {
-    company: "Previous Company",
-    role: "Junior Developer",
-    period: "2022 — 2024",
-    description: "What you built or contributed to. Focus on impact, not just duties.",
-    tags: ["--python", "--django", "--postgresql"],
+    company: "Entertainment Multimedia Computing Student Society  ",
+    role: "Student Organization Program Head & Team Lead",
+    period: "2024 — 2026",
+    description: "Managed event proposals and planning sessions, helping organizations secure approval and deliver events on time. Directed committees responsible for event logistics and program flow.",
+    tags: ["Event Planning", "Team Leadership", "Program Management"],
   },
 ];
 
 // ─── CERTIFICATIONS ─────────────────────────────────────────
-export const certifications: Certification[] = [
-  {
-    name: "AWS Certified Developer – Associate",
-    issuer: "Amazon Web Services",
-    year: "2024",
-    description: "Validates expertise in developing, deploying, and debugging cloud-based applications using AWS.",
-    tags: ["--aws", "--cloud"],
-  },
-  {
-    name: "Professional Cloud Developer",
-    issuer: "Google Cloud",
-    year: "2023",
-    description: "Demonstrates ability to build scalable and highly available applications using Google Cloud technologies.",
-    tags: ["--google-cloud", "--gcp"],
-  },
-  {
-    name: "Meta Frontend Developer Certificate",
-    issuer: "Meta",
-    year: "2022",
-    description: "Comprehensive program covering React, UI/UX principles, and modern frontend engineering practices.",
-    tags: ["--react", "--frontend"],
-  },
-];
 
 // ─── EDUCATION ──────────────────────────────────────────────
 export const education: Education[] = [
   {
-    institution: "University Name",
+    institution: "University of the East",
     degree: "Bachelor of Science in Computer Science",
-    period: "2018 — 2022",
-    description: "Graduated with honors. Focused on software engineering, data structures, and algorithms.",
-  },
-  {
-    institution: "Senior High School",
-    degree: "STEM Strand — Science, Technology, Engineering & Mathematics",
-    period: "2016 — 2018",
-    description: "Completed STEM strand with distinction. Active member of the programming club.",
-  },
-];
-
-// ─── ACHIEVEMENTS ───────────────────────────────────────────
-export const achievements: Achievement[] = [
-  {
-    title: "Open Source Contributor",
-    description: "Contributed to multiple open source projects with accepted pull requests on GitHub.",
-    year: "2024",
-  },
-  {
-    title: "Hackathon 1st Place",
-    description: "Won first place at a national-level 24-hour hackathon with a real-time logistics platform.",
-    year: "2023",
-  },
-  {
-    title: "Dean's Lister",
-    description: "Consistently placed on the Dean's List throughout undergraduate studies.",
-    year: "2018 — 2022",
-  },
-  {
-    title: "Best Capstone Project",
-    description: "Awarded Best Capstone for an AI-assisted inventory management system.",
-    year: "2022",
+    period: "Graduated 2026",
+    description: "Computer Science graduate with a focus on AI-integrated development and applied software projects.",
   },
 ];
 
 // ─── PROJECTS ───────────────────────────────────────────────
 export const projects: Project[] = [
   {
-    id: "project-one",
-    title: "Project One",
-    description: "Short description of the project — what it does, why it exists, and what you learned.",
-    tags: ["--react", "--typescript", "--tailwind"],
-    imageUrl: "/images/projects/project-one.png",
-    githubUrl: "https://github.com/yourusername/project-one",
-    liveDemoUrl: "https://project-one.vercel.app",
+    id: "deal-finder",
+    title: "Deal Finder",
+    description: "A Python tool that collects Carousell listings and filters secondhand deals using Google Sheets input. Gemini API semantic matching helps compare listings and calculate confidence scores.",
+    tags: ["Python", "BeautifulSoup4", "Gemini API", "Google Sheets API"],
+    imageUrl: "",
+    githubUrl: "https://github.com/LuckyProgramme/carousell_listing_scraper.git",
+    liveDemoUrl: "",
     caseStudyUrl: "",
     featured: true,
   },
   {
-    id: "project-two",
-    title: "Project Two",
-    description: "Another project description. What problem does it solve?",
-    tags: ["--python", "--fastapi", "--postgresql"],
+    id: "tugon-general-mathematics-ai-tutor",
+    title: "Tugon: General Mathematics AI Tutor",
+    description: "An AI-driven educational platform created for an undergraduate thesis. Built with React, TypeScript, and Supabase, with a Vercel CI/CD workflow for quick feature updates based on student and teacher feedback.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Express.js", "Supabase", "Postgres"],
     imageUrl: "",
-    githubUrl: "https://github.com/yourusername/project-two",
+    githubUrl: "",
+    liveDemoUrl: "http://tugonv2.vercel.app",
+    caseStudyUrl: "",
+    featured: false,
+  },
+  {
+    id: "milktea-pos",
+    title: "Milktea Point-Of-Sale System",
+    description: "A web-based point-of-sale application with a Java backend, Apache server environment, and responsive HTML and JavaScript frontend. SQL queries support transaction processing and ingredient inventory workflows.",
+    tags: ["Java", "JavaScript", "HTML5", "CSS", "Apache", "SQL"],
+    imageUrl: "",
+    githubUrl: "https://github.com/LuckyProgramme/Milktea-POS.git",
     liveDemoUrl: "",
     caseStudyUrl: "",
     featured: false,
@@ -146,59 +104,54 @@ export const projects: Project[] = [
 // ─── SKILLS / STACK ─────────────────────────────────────────
 export const skills: SkillCategory[] = [
   {
-    category: "--frontend",
+    category: "frontend",
     label: "Frontend",
-    items: [
-      { name: "React / Next.js", level: 90 },
-      { name: "TypeScript",      level: 85 },
-      { name: "Tailwind CSS",    level: 88 },
-    ],
+    items: ["React", "TypeScript", "JavaScript", "HTML & CSS", "Tailwind CSS"],
   },
   {
-    category: "--backend",
+    category: "backend",
     label: "Backend",
-    items: [
-      { name: "Node.js",      level: 80 },
-      { name: "Python",       level: 75 },
-      { name: "PostgreSQL",   level: 70 },
-    ],
+    items: ["Python", "Java", "Express.js", "Node.js", "SQL"],
   },
   {
-    category: "--devops",
-    label: "DevOps & Tools",
-    items: [
-      { name: "Git / GitHub",  level: 90 },
-      { name: "Docker",        level: 65 },
-      { name: "Vercel / CI",   level: 75 },
-    ],
+    category: "tools",
+    label: "Tools & platforms",
+    items: ["Supabase", "Firebase", "Vercel", "Docker", "Postman"],
   },
 ];
+
+export const moreTools = ["Apache / Tomcat", "WSL2", "VS Code", "Figma", "Google Stitch", "Codex"];
+
+export const sectionCopy = {
+  projects: "A few things I built while learning to turn an idea into something useful.",
+  skills: "I use Python and web tools to build practical projects. Here are the technologies I have worked with.",
+  contact: "Have a role or project in mind? Email me and tell me what you’re working on.",
+} as const;
 
 // ─── FAQ ────────────────────────────────────────────────────
 export const faq: FaqEntry[] = [
   {
-    question: "Are you available for freelance or contract work?",
-    answer: "Yes — I'm open to freelance and contract engagements, especially for web applications, APIs, and developer tooling. Feel free to reach out via email to discuss project scope and timeline.",
+    question: "What kind of work do you do?",
+    answer: "I work on Python development, web applications, AI-integrated projects, and quality assurance. I enjoy turning practical problems into useful software.",
   },
   {
-    question: "What is your preferred tech stack?",
-    answer: "My go-to stack is TypeScript + React/Next.js on the frontend, Node.js or Python (FastAPI/Django) on the backend, and PostgreSQL or Supabase for the database. I'm also comfortable with cloud platforms like AWS and GCP.",
+    question: "What technologies have you used?",
+    answer: "My experience includes Python, JavaScript, Java, TypeScript, React, Express.js, SQL, Supabase, Firebase, Vercel, Apache, Docker, Postman, and RSpec.",
   },
   {
-    question: "Do you have experience with remote teams?",
-    answer: "Absolutely. I've worked with distributed teams across different time zones using tools like Slack, Notion, Linear, and GitHub Projects. I'm self-directed and keep communication async-friendly.",
+    question: "What projects have you built?",
+    answer: "Some relevant projects that shows my experience include a Carousell deal finder webscraper script, the Tugon General Mathematics AI Tutor in which I integrated shows AI integration and web development experience, and a Milktea point-of-sale system on some exposure to Java.",
   },
   {
-    question: "What kind of roles are you looking for?",
-    answer: "Full-stack or frontend-focused roles at product-driven companies. I'm especially interested in teams that care about DX, code quality, and building tools that developers love to use.",
+    question: "Are you open to work?",
+    answer: "Yes. I am open to opportunities in Python development, and web development.",
   },
 ];
 
 // ─── SIDEBAR METADATA ───────────────────────────────────────
 export const siteIdentity = {
-  brandId: "DEV_PORTFOLIO_v1.0",
-  sysUser: "SYS_USER",
-  version: "v1.0.0",
+  brandId: "MALONZO_DEV",
+  sysUser: "LESTER MALONZO",
 } as const;
 
 // ─── TYPE DEFINITIONS ───────────────────────────────────────
@@ -226,12 +179,6 @@ interface Education {
   description: string;
 }
 
-interface Achievement {
-  title: string;
-  description: string;
-  year: string;
-}
-
 interface Project {
   id: string;
   title: string;
@@ -247,7 +194,7 @@ interface Project {
 interface SkillCategory {
   category: string;
   label: string;
-  items: { name: string; level: number }[];
+  items: string[];
 }
 
 interface FaqEntry {

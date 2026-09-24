@@ -10,7 +10,7 @@ export default function Home() {
     <StackProvider>
       <div className="flex h-screen overflow-hidden">
         <Sidebar />
-        <main className="flex-1 min-w-0 h-screen overflow-y-auto pb-16 md:pb-0">
+        <main className="flex-1 min-w-0 h-screen overflow-y-auto pb-16 md:pb-0 flex flex-col">
           <StackManager />
           <Footer />
         </main>

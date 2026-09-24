@@ -6,23 +6,19 @@ import { useTheme } from '@/components/ThemeProvider';
 import { personal, siteIdentity, contact } from '@/config/content.config';
 import {
   Sun, Moon, Download,
-  User, FolderOpen, Package, HelpCircle, Activity,
+  User, FolderOpen, Package, HelpCircle, Mail,
 } from 'lucide-react';
 
 const PRIMARY_NAV = [
-  { id: 'ROOT',     label: 'DEVELOPER INFO', icon: User },
-  { id: 'PROJECTS', label: 'PROJECTS',       icon: FolderOpen },
-  { id: 'STACK',    label: 'LIB',            icon: Package },
-  { id: 'FAQ',      label: 'FAQ',            icon: HelpCircle },
-  { id: 'CONTACT',  label: 'STATUS',         icon: Activity },
+  { id: 'ROOT',     label: 'About',    icon: User },
+  { id: 'PROJECTS', label: 'Projects', icon: FolderOpen },
+  { id: 'STACK',    label: 'Skills',   icon: Package },
+  { id: 'FAQ',      label: 'Questions', icon: HelpCircle },
+  { id: 'CONTACT',  label: 'Contact',  icon: Mail },
 ] as const;
 
-function scrollMainToTop() {
-  document.querySelector('main')?.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
 export default function Sidebar() {
-  const { activeStack, push, remove } = useStack();
+  const { activeStack, push } = useStack();
   const { theme, toggle } = useTheme();
   const isDark = theme === 'dark';
 
@@ -53,7 +49,7 @@ export default function Sidebar() {
             <p className="font-mono text-[12px] tracking-widest text-muted uppercase">
               {siteIdentity.sysUser}
             </p>
-            <p className="font-mono text-[11px] text-muted">{siteIdentity.version}</p>
+            <p className="font-mono text-xs text-muted">{personal.role}</p>
           </div>
         </div>
 
@@ -64,13 +60,13 @@ export default function Sidebar() {
             download
             className="flex items-center gap-2 w-full px-3 py-2 border border-[#334155] font-mono text-[12px] tracking-[0.06em] uppercase text-slate-400 hover:border-sky hover:text-sky transition-colors"
           >
-            <Download size={13} />
-            <span>DOWNLOAD CV</span>
+            <Download size={14} />
+            <span>DOWNLOAD RESUME</span>
           </a>
 
           {/* Theme toggle switch — under Download CV */}
           <div className="pt-2">
-            <p className="font-mono text-[10px] tracking-[0.12em] uppercase text-slate-500 mb-1.5">THEME</p>
+            <p className="font-mono text-xs text-muted mb-1.5">Theme</p>
             <button
               onClick={toggle}
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -99,20 +95,13 @@ export default function Sidebar() {
         {/* Primary nav */}
         <nav className="py-2">
           {PRIMARY_NAV.map(({ id, label, icon: Icon }) => {
-            const active = activeStack.includes(id);
+            const active = activeStack[0] === id;
             return (
               <button
                 key={id}
-                onClick={() => {
-                  if (active) {
-                    remove(id);
-                    setTimeout(() => { push(id); scrollMainToTop(); }, 350);
-                  } else {
-                    push(id);
-                    scrollMainToTop();
-                  }
-                }}
-                className={`w-full text-left px-4 py-2 font-mono text-sm tracking-[0.06em] uppercase border-l-2 transition-colors flex items-center gap-2.5 ${
+                onClick={() => push(id)}
+                aria-pressed={active}
+                className={`w-full text-left px-4 py-2 font-mono text-sm border-l-2 transition-colors flex items-center gap-2.5 ${
                   active
                     ? 'border-sky bg-navy text-white font-semibold hover:bg-white hover:text-navy'
                     : 'border-transparent text-slate-500 hover:bg-navy hover:text-white'
@@ -137,7 +126,7 @@ export default function Sidebar() {
               rel="noreferrer"
               className="flex-1 py-2 px-4 font-mono text-[13px] tracking-[0.06em] uppercase text-slate-500 hover:text-sky transition-colors text-center"
             >
-              REPOS
+              GitHub
             </a>
             <a
               href={contact.linkedin}
@@ -145,7 +134,7 @@ export default function Sidebar() {
               rel="noreferrer"
               className="flex-1 py-2 px-4 font-mono text-[13px] tracking-[0.06em] uppercase text-slate-500 hover:text-sky transition-colors text-center"
             >
-              STATUS
+              LinkedIn
             </a>
           </div>
         </div>
@@ -155,20 +144,13 @@ export default function Sidebar() {
       {/* Mobile bottom tab bar */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-nav border-t border-outline flex">
         {PRIMARY_NAV.map(({ id, label }) => {
-          const active = activeStack.includes(id);
+          const active = activeStack[0] === id;
           return (
             <button
               key={id}
-              onClick={() => {
-                if (active) {
-                  remove(id);
-                  setTimeout(() => { push(id); scrollMainToTop(); }, 350);
-                } else {
-                  push(id);
-                  scrollMainToTop();
-                }
-              }}
-              className={`flex-1 py-3 font-mono text-xs tracking-widest uppercase transition-colors ${
+              onClick={() => push(id)}
+              aria-pressed={active}
+              className={`flex-1 py-3 font-mono text-xs transition-colors ${
                 active ? 'text-sky border-t-2 border-sky' : 'text-muted border-t-2 border-transparent'
               }`}
             >

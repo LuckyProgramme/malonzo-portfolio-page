@@ -1,64 +1,53 @@
-'use client';
-
-import { useState } from 'react';
-import { skills } from '@/config/content.config';
-import SkillsModal from '@/components/modals/SkillsModal';
-
-type SkillCategory = typeof skills[number];
+import { moreTools, projects, sectionCopy, skills } from '@/config/content.config';
 
 export default function StackPanel() {
-  const [selected, setSelected] = useState<SkillCategory | null>(null);
-
   return (
-    <div className="space-y-6">
-      <p className="font-mono text-xs tracking-widest uppercase text-muted">// TECH STACK — CORE COMPETENCIES</p>
-
-      {/* Category chips */}
-      <div className="flex flex-wrap gap-2">
-        {skills.map(cat => (
-          <button
-            key={cat.category}
-            onClick={() => setSelected(cat)}
-            className="font-mono text-xs tracking-widest uppercase px-3 py-1.5 border border-outline text-muted hover:border-sky hover:text-sky transition-colors"
-          >
-            {cat.category}
-          </button>
-        ))}
+    <div className="space-y-8">
+      <div className="max-w-2xl">
+        <p className="font-sans text-lg leading-relaxed text-ink">
+          {sectionCopy.skills}
+        </p>
       </div>
 
-      {/* Inline skill grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {skills.map(cat => (
-          <div key={cat.category} className="space-y-3">
-            <p className="font-mono text-xs tracking-widest uppercase text-sky">{cat.label}</p>
-            {cat.items.map(skill => (
-              <SkillBar key={skill.name} name={skill.name} level={skill.level} />
-            ))}
-          </div>
+        {skills.map(category => (
+          <section key={category.category} className="border-t-2 border-outline pt-4">
+            <h3 className="font-sans text-lg font-semibold text-ink mb-3">{category.label}</h3>
+            <ul className="space-y-2">
+              {category.items.map(name => (
+                <li key={name} className="font-mono text-sm text-muted border-b border-outline-subtle pb-2">
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </section>
         ))}
       </div>
 
-      {/* Modal */}
-      {selected && (
-        <SkillsModal category={selected} onClose={() => setSelected(null)} />
-      )}
-    </div>
-  );
-}
+      <div className="border border-outline bg-surface p-5 max-w-3xl">
+        <h3 className="font-sans text-lg font-semibold text-ink">Where I’ve used them</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-3">
+          {projects.slice(0, 2).map(project => (
+            <div key={project.id}>
+              <h4 className="font-sans text-base font-semibold text-ink">{project.title}</h4>
+              <p className="font-sans text-sm leading-relaxed text-muted mt-1">{project.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
 
-function SkillBar({ name, level }: { name: string; level: number }) {
-  return (
-    <div className="space-y-1">
-      <div className="flex justify-between font-mono text-xs text-muted">
-        <span>{name}</span>
-        <span>{level}%</span>
-      </div>
-      <div className="h-px bg-outline w-full relative">
-        <div
-          className="h-px bg-sky skill-bar-fill absolute left-0 top-0"
-          style={{ width: `${level}%` }}
-        />
-      </div>
+      <details className="max-w-3xl border-t border-outline pt-4">
+        <summary className="font-mono text-sm text-ink cursor-pointer hover:text-sky">
+          More tools I’ve used
+        </summary>
+        <ul className="flex flex-wrap gap-2 mt-4">
+          {moreTools.map(name => (
+            <li key={name} className="font-mono text-xs text-muted border border-outline bg-surface px-3 py-2">
+              {name}
+            </li>
+          ))}
+        </ul>
+      </details>
     </div>
   );
 }
