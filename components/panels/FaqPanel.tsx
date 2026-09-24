@@ -7,10 +7,8 @@ export default function FaqPanel() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <div className="space-y-1">
-      <p className="font-mono text-xs tracking-widest uppercase text-muted mb-4">
-        // FAQ — FREQUENTLY ASKED QUESTIONS
-      </p>
+    <div className="space-y-3">
+      <h2 className="font-sans text-2xl font-semibold text-ink mb-4">A little more about my work</h2>
 
       {faq.map((entry, i) => {
         const isOpen = openIndex === i;
@@ -19,13 +17,14 @@ export default function FaqPanel() {
             {/* Header — always navy bg, always white text */}
             <button
               onClick={() => setOpenIndex(isOpen ? -1 : i)}
+              aria-expanded={isOpen}
               className="w-full flex items-center justify-between px-4 py-3 bg-surface-alt hover:bg-surface transition-colors text-left cursor-pointer group"
             >
-              <span className="font-mono text-xs tracking-widest uppercase text-navy dark:text-white pr-4">
-                // Q: {entry.question}
+              <span className="font-sans text-base font-medium text-ink pr-4">
+                {entry.question}
               </span>
-              <span className="font-mono text-xs text-sky shrink-0">
-                {isOpen ? '[ — ]' : '[ + ]'}
+              <span className="font-mono text-sm text-muted shrink-0" aria-hidden="true">
+                {isOpen ? '−' : '+'}
               </span>
             </button>
 
@@ -39,7 +38,7 @@ export default function FaqPanel() {
               }}
             >
               <div className="px-4 py-4 bg-surface border-t border-outline">
-                <p className="font-mono text-sm text-muted leading-relaxed">{entry.answer}</p>
+                <p className="font-sans text-base text-muted leading-relaxed max-w-prose">{entry.answer}</p>
               </div>
             </div>
           </div>

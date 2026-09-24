@@ -21,7 +21,7 @@ const config: Config = {
         'sky-dim':'#0284c7',
       },
       fontFamily: {
-        sans: ['var(--font-mono)', 'monospace'],
+        sans: ['var(--font-geist-sans)', 'sans-serif'],
         mono: ['var(--font-mono)', 'monospace'],
       },
       borderRadius: {

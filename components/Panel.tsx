@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState, ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface PanelProps {
   id: string;
@@ -16,46 +16,31 @@ const panelVariants = {
   exit:    { opacity: 0, y: 10, transition: { duration: 0.2 } },
 };
 
-function useTypewriter(text: string, speed = 35) {
-  const [displayed, setDisplayed] = useState('');
-  useEffect(() => {
-    setDisplayed('');
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayed(text.slice(0, i));
-      i++;
-      if (i > text.length) clearInterval(interval);
-    }, speed);
-    return () => clearInterval(interval);
-  }, [text, speed]);
-  return displayed;
-}
-
 export default function Panel({ id, title, onClose, children }: PanelProps) {
-  const displayed = useTypewriter(title);
+  const reducedMotion = useReducedMotion();
 
   return (
     <motion.div
       id={id}
-      layout
-      variants={panelVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
+      layout={!reducedMotion}
+      variants={reducedMotion ? undefined : panelVariants}
+      initial={reducedMotion ? false : 'initial'}
+      animate={reducedMotion ? undefined : 'animate'}
+      exit={reducedMotion ? undefined : 'exit'}
       className="mb-4 border border-outline bg-surface overflow-hidden"
     >
       {/* Header bar */}
       <div data-panel-header className="flex items-center justify-between px-4 py-2 bg-navy border-b border-outline">
-        <span className="font-mono text-sm tracking-widest uppercase text-white">
-          {displayed}
+        <span className="font-mono text-sm text-white">
+          {title}
         </span>
         {onClose && (
           <button
             onClick={onClose}
-            className="font-mono text-xs text-white/50 hover:text-sky transition-colors ml-4"
-            aria-label="Close panel"
+            className="font-mono text-sm text-white/80 hover:text-sky transition-colors ml-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-sky"
+            aria-label={'Close ' + title}
           >
-            [ X ]
+            Close
           </button>
         )}
       </div>

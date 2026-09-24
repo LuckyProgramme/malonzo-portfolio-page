@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { GeistMono } from 'geist/font/mono';
+import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import { personal } from '@/config/content.config';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -7,11 +8,12 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 export const metadata: Metadata = {
   title: `${personal.name} — ${personal.role}`,
   description: personal.tagline,
+  icons: { icon: personal.avatarUrl },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`dark ${GeistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`dark ${GeistMono.variable} ${GeistSans.variable}`} suppressHydrationWarning>
       <body className="bg-page text-ink font-mono antialiased">
         <ThemeProvider>
           {children}

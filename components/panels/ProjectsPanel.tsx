@@ -1,23 +1,26 @@
 import Image from 'next/image';
-import { projects } from '@/config/content.config';
+import { projects, sectionCopy } from '@/config/content.config';
 import { Github, ExternalLink, BookOpen } from 'lucide-react';
 
 export default function ProjectsPanel() {
   const sorted = [...projects].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
 
   return (
-    <div className="space-y-4">
-      <p className="font-mono text-xs tracking-widest uppercase text-muted">// PROJECTS</p>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div className="space-y-6">
+      <div className="max-w-2xl">
+        <p className="font-sans text-lg text-ink leading-relaxed">
+          {sectionCopy.projects}
+        </p>
+      </div>
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
         {sorted.map(project => (
           <div key={project.id} className="border border-outline bg-surface flex flex-col">
-            {/* Card header — always navy */}
-            <div className="flex items-center justify-between px-4 py-2 bg-navy border-b border-outline">
-              <span className="font-mono text-xs tracking-widest uppercase text-white">
+            <div className="flex items-center justify-between gap-4 px-5 pt-5">
+              <h3 className="font-sans text-xl font-semibold text-ink">
                 {project.title}
-              </span>
+              </h3>
               {project.featured && (
-                <span className="font-mono text-xs text-sky tracking-widest uppercase">--featured</span>
+                <span className="font-mono text-xs text-muted shrink-0">Selected work</span>
               )}
             </div>
 
@@ -34,8 +37,8 @@ export default function ProjectsPanel() {
             )}
 
             {/* Body */}
-            <div className="p-4 flex flex-col flex-1 gap-3">
-              <p className="font-sans text-sm text-muted leading-relaxed flex-1">
+            <div className="p-5 flex flex-col flex-1 gap-4">
+              <p className="font-sans text-base text-muted leading-relaxed flex-1 max-w-prose">
                 {project.description}
               </p>
 
@@ -52,23 +55,23 @@ export default function ProjectsPanel() {
               <div className="flex flex-wrap gap-2 pt-1">
                 {project.githubUrl && (
                   <a href={project.githubUrl} target="_blank" rel="noreferrer"
-                    className="flex items-center gap-1.5 font-mono text-xs tracking-widest uppercase border border-outline px-3 py-1.5 text-muted hover:border-sky hover:text-sky transition-colors">
+                    className="flex items-center gap-1.5 font-mono text-xs border border-outline px-3 py-2 text-ink hover:border-sky hover:text-sky transition-colors">
                     <Github size={11} />
-                    VIEW_GITHUB
+                    View code
                   </a>
                 )}
                 {project.liveDemoUrl && (
                   <a href={project.liveDemoUrl} target="_blank" rel="noreferrer"
-                    className="flex items-center gap-1.5 font-mono text-xs tracking-widest uppercase border border-outline px-3 py-1.5 text-muted hover:border-sky hover:text-sky transition-colors">
+                    className="flex items-center gap-1.5 font-mono text-xs border border-outline px-3 py-2 text-ink hover:border-sky hover:text-sky transition-colors">
                     <ExternalLink size={11} />
-                    LIVE_DEMO
+                    Visit project
                   </a>
                 )}
                 {project.caseStudyUrl && (
                   <a href={project.caseStudyUrl} target="_blank" rel="noreferrer"
-                    className="flex items-center gap-1.5 font-mono text-xs tracking-widest uppercase border border-outline px-3 py-1.5 text-muted hover:border-sky hover:text-sky transition-colors">
+                    className="flex items-center gap-1.5 font-mono text-xs border border-outline px-3 py-2 text-ink hover:border-sky hover:text-sky transition-colors">
                     <BookOpen size={11} />
-                    READ_CASE_STUDY
+                    Read case study
                   </a>
                 )}
               </div>
